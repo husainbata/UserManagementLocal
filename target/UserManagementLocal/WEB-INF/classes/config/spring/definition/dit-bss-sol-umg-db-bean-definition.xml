@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/data/jpa 
+	http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.derivit.solutions.bss.um.database"></context:component-scan>
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<tx:annotation-driven />
+
+	<jpa:repositories
+		base-package="com.derivit.solutions.bss.um.database.repository" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="umgdatasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<!-- <value>jdbc:oracle:thin:@10.1.180.24:1811:glcmsuid</value> -->
+			<value>jdbc:oracle:thin:@localhost:1521:NBADUID</value>
+		</property>
+		<property name="username">
+			<value>UMGADMIN</value>
+		</property>
+		<property name="password">
+			<value>UMGADMIN</value>
+		</property>
+	</bean>
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="umgdatasource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database">
+					<value>ORACLE</value>
+				</property>
+				<property name="showSql" value="false" />
+				<property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect" />
+			</bean>
+		</property>
+	</bean>
+</beans>

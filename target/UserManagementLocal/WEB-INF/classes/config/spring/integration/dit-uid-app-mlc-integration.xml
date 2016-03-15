@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	<bean id="mqConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>mqtest.nbad.com</value>
+		</property>
+		<property name="port">
+			<value>14201</value>
+		</property>
+		<property name="queueManager">
+			<value>QM_MUREX_PROD</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+		<property name="channel">
+			<value>UID.SVRCONN</value>
+		</property>
+	</bean>
+	<!-- JMS Queue Connection Factory -->
+	<bean id="jmsQueueConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory102">
+		<property name="targetConnectionFactory">
+			<ref bean="myConnectionFactory" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+	</bean>
+	<bean id="myConnectionFactory"
+		class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<ref bean="mqConnectionFactory" />
+		</property>
+		<property name="username">
+			<value>mqwebservice</value>
+		</property>
+		<property name="password">
+			<value>Nbad1@34</value>
+		</property>
+	</bean>
+	<!-- JMS Destination Resolver -->
+	<bean id="jmsDestinationResolver"
+		class="org.springframework.jms.support.destination.DynamicDestinationResolver">
+	</bean>
+	<!-- JMS Queue Template -->
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate102">
+		<property name="connectionFactory">
+			<ref bean="jmsQueueConnectionFactory" />
+		</property>
+		<property name="destinationResolver">
+			<ref bean="jmsDestinationResolver" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+		<property name="receiveTimeout">
+			<value>20000</value>
+		</property>
+	</bean>
+
+	<bean id="dituidmlcmessagelistener" class="com.derivit.nbad.uid.creation.integration.mlc.DITUIDMLCMessageListener">
+	</bean>
+	<!-- 
+	<bean id="dituidmlcresponsequeue" class="com.ibm.mq.jms.MQQueue">
+		<property name="baseQueueName">
+			<value>GLCMS.TO.UID.LQ</value>
+		</property>
+	</bean>
+	<bean id="dituidmlcschedulecontainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="myConnectionFactory" />
+		<property name="destination" ref="dituidmlcresponsequeue" />
+		<property name="messageListener" ref="	DITUIDMLCMessageListener" />
+		<property name="receiveTimeout" value="3000" />
+		<property name="maxMessagesPerTask" value="8" />
+		<property name="autoStartup" value="true" />
+		<property name="acceptMessagesWhileStopping" value="false" />
+		<property name="maxConcurrentConsumers" value="3" />
+	</bean>
+	 -->
+</beans>

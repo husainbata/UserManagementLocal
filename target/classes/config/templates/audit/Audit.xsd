@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://audit.module.core.creation.uid.nbad.derivit.com"
+	xmlns:tns="http://audit.module.core.creation.uid.nbad.derivit.com"
+	elementFormDefault="qualified">
+	<xs:element name="DITUIDAudit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Username" />
+				<xs:element type="xs:string" name="FirstName" />
+				<xs:element type="xs:string" name="LastName" />
+				<xs:element type="xs:string" name="EmailId" />
+				<xs:element type="xs:string" name="Department" />
+				<xs:element type="xs:string" name="LoggedIn" />
+				<xs:element type="xs:string" name="LoggedOut" />
+				<xs:element type="xs:string" name="Status" />
+				<xs:element ref="tns:DITUIDAuditModules"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDAuditModules">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:DITUIDAuditModule"
+					maxOccurs="unbounded" minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDAuditModule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" />
+				<xs:element type="xs:string" name="OldValue" />
+				<xs:element type="xs:string" name="NewValue" />
+				<xs:element type="xs:string" name="Action" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateFields">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:DITUIDPrintTemplateField" maxOccurs="unbounded"
+					minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateField">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" />
+				<xs:element type="xs:string" name="Id" />
+				<xs:element type="xs:string" name="Value" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

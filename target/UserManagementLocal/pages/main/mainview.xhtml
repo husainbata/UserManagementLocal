@@ -1,0 +1,55 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="maintabview">
+		<p:tabView dynamic="true" cache="true">
+			<p:tab title="Application Management">
+				<div class="ContainerIndent">
+					<p:fieldset toggleable="false" legend="Existing Application">
+						<!--<ui:include
+							src="/pages/main/usermanagement/activeusermanagement.xhtml"></ui:include>-->
+					</p:fieldset>
+					<div class="EmptyBox10"></div>
+					<p:fieldset toggleable="false" legend="Pending Application">
+						<!--<ui:include
+							src="/pages/main/usermanagement/pendingusermanagement.xhtml"></ui:include>-->
+					</p:fieldset>
+					<div class="EmptyBox10"></div>
+					<!--<ui:include
+						src="/pages/main/usermanagement/addnewusermanagement.xhtml"></ui:include>-->
+				</div>
+			</p:tab>
+			<p:tab title="User Management">
+				<div class="ContainerIndent">
+					<p:fieldset toggleable="false" legend="Active Users">
+						<ui:include
+							src="/pages/main/usermanagement/activeusermanagement.xhtml"></ui:include>
+					</p:fieldset>
+					<div class="EmptyBox10"></div>
+					<p:fieldset toggleable="false" legend="Pending Users">
+						<ui:include
+							src="/pages/main/usermanagement/pendingusermanagement.xhtml"></ui:include>
+					</p:fieldset>
+					<div class="EmptyBox10"></div>
+					<ui:include
+						src="/pages/main/usermanagement/addnewusermanagement.xhtml"></ui:include>
+				</div>
+			</p:tab>
+			<p:tab title="Group Management">
+				<div class="ContainerIndent">
+					<p:fieldset toggleable="false" legend="Existing Groups">
+						<ui:include
+							src="/pages/main/groupmanagement/activegroupmanagement.xhtml"></ui:include>
+					</p:fieldset>
+					<div class="EmptyBox10"></div>
+					<p:fieldset toggleable="false" legend="Pending Groups">
+						<ui:include
+							src="/pages/main/groupmanagement/pendinggroupmanagement.xhtml"></ui:include>
+					</p:fieldset>
+				</div>
+			</p:tab>
+		</p:tabView>
+	</h:form>
+</ui:fragment>

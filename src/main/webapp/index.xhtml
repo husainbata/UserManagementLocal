@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><html class="no-js"><![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script>
+		//<![CDATA[
+		/** login validation start **/
+		function validatelogin() {
+			jQuery(document).ready(function() {
+				jQuery("#validateuser").text("");
+			});
+			jQuery(document).ready(function() {
+				jQuery("#validatepassword").text("");
+			});
+			var userName = document.getElementById("txt_username");
+			if (userName.value == 0 || userName.value == "") {
+				jQuery(document).ready(function() {
+					jQuery("#validateuser").text("Please Enter User Name!");
+				});
+			}
+			var password = document.getElementById("txt_password");
+			if (password.value == 0 || password.value == "") {
+				jQuery(document).ready(function() {
+					jQuery("#validatepassword").text("Please Enter Password!");
+				});
+			}
+			if (userName.value == 0 || userName.value == ""
+					&& password.value == 0 || password.value == "") {
+				return false;
+			} else {
+				PF('ajaxstatusDialog').show();
+				return true;
+			}
+		}
+		/** login validation end **/
+
+		/** disable right click start **/
+		$(document).ready(function() {
+			var message = "Cntrl key/ Right Click Option disabled";
+			$(document).bind("contextmenu", function(e) {
+				alert(message);
+				return false;
+			});
+		});
+
+		function disableCtrlKeyCombination(e) {
+			var message = "Cntrl key/ Right Click Option disabled";
+			var kCode = e.keyCode || e.charCode;
+			//FF and Safari use e.charCode, while IE use e.keyCode
+			if (kCode == 17 || kCode == 2) {
+				alert(message);
+				return false;
+			}
+		}
+		/** disable right click end**/
+
+		//]]>
+	</script>
+
+	<h:outputStylesheet library="css" name="layout/core-layout.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="layout/modena-layout.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="animate.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="perfect-scrollbar.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="ripple-effect.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="buttons.css"></h:outputStylesheet>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images/favicon.ico']}" />
+	<title>User Management</title>
+</h:head>
+
+<h:body styleClass="RedModena Geometry"
+	onkeydown="disableCtrlKeyCombination(event);"
+	onkeypress="return disableCtrlKeyCombination(event);">
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true">
+	</p:messages>
+	<p:ajaxStatus onstart="PF('ajaxstatusDialog').show();"
+		onsuccess="PF('ajaxstatusDialog').hide();" />
+	<p:dialog modal="true" widgetVar="ajaxstatusDialog" header="Processing"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage value="/resources/images/ajaxLoader.gif" />
+	</p:dialog>
+	<div id="layout-topbar">
+		<!--<a id="logo">derivIT</a>-->
+		<h:outputLabel id="logoPart1" value="deriv"
+			style="color: #000000;padding: 0px !important;font-size: 32px;font-weight: bold;"></h:outputLabel>
+		<h:outputLabel id="logoPart2" value="IT"
+			style="color: #8b0000;padding: 0px !important;font-size: 32px;font-weight: bold;"></h:outputLabel>
+		<h:outputText value="Entitlement Provider"
+			style="color: #FFFFFF;font-family: Palatino !important;font-size: 32px;font-weight: bold;margin: 0 auto !important;padding-bottom: 0;text-align: center !important;margin: 0 32% !important;"></h:outputText>
+	</div>
+	<div id="wrapper">
+		<div id="wrapperIndent">
+			<div id="layout-portlets-cover">
+				<div id="Container96 Fnone MarAuto">
+					<div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+						<div class="Wid33 MarAuto WidAutoOnMobile">
+
+							<div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+								<div class="MarAuto WidAutoOnMobile">
+									<div class="EmptyBox30" />
+									<div class="Card ShadowEffect">
+										<div class="Wid100 OvHidden BigTopic Fs30">
+											<i class="icon-security Fs60 DispBlock"></i> Login
+										</div>
+
+										<h:form id="login-index" prependId="false">
+											<div class="EmptyBox10" />
+											<div class="Wid100">
+												<h:outputLabel for="txt_username" value="Username"
+													style="padding: 4px !important"></h:outputLabel>
+												<p:inputText id="txt_username" value="#{loginMB.username}" />
+											</div>
+											<div class="EmptyBox10" />
+											<span id="validateuser" style="color: red;"></span>
+											<div class="EmptyBox10" />
+											<div class="Wid100">
+												<h:outputLabel for="txt_password" value="Password"
+													style="padding: 4px !important"></h:outputLabel>
+												<p:password id="txt_password" value="#{loginMB.password}" />
+											</div>
+											<div class="EmptyBox10" />
+											<span id="validatepassword" style="color: red;"></span>
+											<div class="EmptyBox10" />
+											<div class="Responsive50">
+												<p:commandButton value="Login" ajax="false"
+													styleClass="Fs18 White RaisedButton FloatNoneOnMobile"
+													icon="loginIcon" onclick="return validatelogin();"
+													action="#{loginMB.login}">
+												</p:commandButton>
+											</div>
+										</h:form>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div
+							class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular Gray">
+							<!--<div>&#169;derivIT Solutions Pte. All rights reserved.</div>-->
+							<p:outputPanel>
+								<!--<h:outputText
+									value="Warning: The access to derivIT network is restricted for authorized personnel only. Access to derivIT Network is monitored and reviewed on regular basis, therefore you are advised not to attempt unauthorized access to derivIT network and disconnect immediately. Any dissemination, use, review, distribution, printing or copying of information in whole or in part is strictly prohibited. derivIT reserves the right to take legal action against such personnel." />-->
+								<ui:include src="/pages/common/footer.xhtml"></ui:include>
+							</p:outputPanel>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

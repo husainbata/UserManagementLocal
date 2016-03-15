@@ -1,0 +1,142 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<style type="text/css">
+.ui-splitbutton-menubutton {
+	height: 30px;
+}
+
+.ui-menu-child {
+	border: 2px solid #2A96FF;
+}
+
+.ui-overlaypanel-content {
+	border: 2px solid #2A96FF;
+}
+
+.ui-splitbutton-menubutton {
+	height: 30px !important;
+	border: 0 none !important;
+}
+
+.loginIcon {
+	background: url("#{resource['images/uidactionimagesprites1.png']}")
+		!important;
+	background-position: 0px -666px !important;
+}
+</style>
+
+	<script>
+		$(function() {
+			$(".welcome-class").click(function() {
+				jQuery(window).unbind("beforeunload");
+			});
+		});
+	</script>
+	<p:panel id="headerpanel"
+		style="border:none !important;border-top: 6px solid #71cc8d !important; height: 60px !important;">
+
+		<!-- <span
+			class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+				value="#{session.lastAccessedTime}">
+				<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+			</h:outputText></span>
+		<i class="icon-account_circle Fright Fs30"></i>
+		<span
+			class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+				value="#{loginMB.username}"></h:outputText></span>
+		<i class="icon-account_circle Fright Fs30"></i>
+		<span
+			class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight">
+			<p:commandButton icon="logoutIcon" value="Logout"
+				style="padding-right: 7px; font-size:16px !important; font-weight: bold !important;"
+				title="Logout" action="#{loginMB.logout}">
+			</p:commandButton>
+		</span> -->
+
+		<!-- <p:panel id="appdisplaytextpanel"
+			style="display: inline-block !important; background: none !important; border: none !important; ">
+			<h:outputText value="RAROC Calculator"
+				style="font-family: Palatino !important;font-size: 24px; line-height: 50px !important; font-weight: bold;margin: 0 auto !important;padding-bottom: 0;text-align: center !important;"></h:outputText>
+		</p:panel> -->
+
+		<p:panel id="collectorpanel"
+			style="float:right !important; background: none !important; border: none !important; ">
+			<h:form prependId="false" id="headerformid">
+				<p:menubar autoDisplay="true"
+					style="float:right !important;border:0 !important;font-weight:bold !important">
+					<f:facet name="options">
+						<!-- <h:outputText value="Welcome #{user.displayname} "
+							style="color: #000000 !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px; line-height: 32px !important; cursor:default !important;" />
+						<h:outputText value="#{session.lastAccessedTime}"
+							style="color: #000000 !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px; line-height: 32px !important; cursor:default !important;">
+							<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+						</h:outputText> -->
+
+						<!-- <p:column>
+							<p:inputText id="uidsearchId" label="uidsearch"
+								value="#{searchMB.nameOrCIF}"
+								style="height: 22px !important; padding: 1 !important; font-size:13px; border:none !important; background: none !important; border-bottom: 1px solid #f1f6f9 !important;" />
+							<p:watermark value="Enter Name/CIF to search" for="uidsearchId"></p:watermark>
+							<p:commandButton image="searchIconClass"
+								styleClass="header-action-item-background"
+								style="margin-right: 5px !important;font-size:16px !important; font-weight: bold !important;"
+								icon="searchIconClass" iconPos="left" id="defaultsearchbtnId"
+								update=":defaultSearchPopUpID"
+								oncomplete="PF('defaultSearchPopUpWV').show();"
+								onstart="return validateDefaultSearch();"
+								actionListener="#{searchMB.defaultSearch}" process="uidsearchId">
+							</p:commandButton>
+							<p:defaultCommand target="defaultsearchbtnId" />
+						</p:column> -->
+					</f:facet>
+				</p:menubar>
+
+				<!-- <p:commandButton icon="loginIcon" value="Logout"
+					styleClass="header-action-item-background"
+					style="color: #000000 !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px; line-height: 32px !important; cursor:default !important;"
+					title="Logout" action="#{loginMB.logout}">
+				</p:commandButton>
+				<h:outputText value="#{session.lastAccessedTime}"
+					style="color: #000000 !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px; line-height: 32px !important; cursor:default !important;">
+					<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+				</h:outputText>
+				<h:outputText value="Welcome #{user.displayname} "
+					style="color: #000000 !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px; line-height: 32px !important; cursor:default !important;" /> -->
+
+				<!-- <p:commandButton icon="loginIcon" value="Logout"
+					styleClass="header-action-item-background"
+					style="margin-right: 3px !important; float:right; margin-top:4px; font-size:16px !important; font-weight: bold !important;"
+					title="Logout" onclick="logout()" action="#{loginMB.logout}">
+				</p:commandButton>
+				<h:outputText value="#{session.lastAccessedTime}"
+					style="color: #000000 !important; float: right !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px;">
+					<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+				</h:outputText>
+				<h:outputText value="Welcome #{logInBean.userDO.displayName} "
+					style="color: #000000 !important; float: right !important; padding-right: 7px; font-weight: bold; margin-top: 12px;font-size: 14px;" /> -->
+
+				<span
+					class="DispInlBlock Fright BoldGray MarRight10 MarBot10 HoverEffect Fs22  FontRobotoLight">
+					<p:commandButton icon="loginIcon" value="Logout" title="Logout"
+						onclick="logout()" action="#{loginMB.logout}">
+					</p:commandButton>
+				</span>
+				<i class="icon-account_circle Fright Fs30"></i>
+				<span
+					class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+						value="#{session.lastAccessedTime}">
+						<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+					</h:outputText></span>
+				<i class="icon-account_circle Fright Fs30"></i>
+				<span
+					class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+						value="Welcome #{loginMB.username}"></h:outputText></span>
+				<i class="icon-account_circle Fright Fs30"></i>
+
+			</h:form>
+		</p:panel>
+	</p:panel>
+</ui:fragment>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><html class="no-js"><![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="layout/core-layout.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="layout/modena-layout.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="animate.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="perfect-scrollbar.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="ripple-effect.css"></h:outputStylesheet>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images/favicon.ico']}" />
+	<title>User Management</title>
+</h:head>
+<h:body styleClass="RedModena Geometry"
+	onkeydown="return disableCtrlKeyCombination(event);">
+
+	<p:ajaxStatus onstart="PF('ajaxstatusDialog').show();"
+		onsuccess="PF('ajaxstatusDialog').hide();" />
+	<p:dialog modal="true" widgetVar="ajaxstatusDialog" header="Processing"
+		height="auto" width="auto" draggable="false" closable="false"
+		resizable="false">
+		<p:graphicImage value="/resources/images/ajaxLoader.gif" />
+	</p:dialog>
+
+	<div id="layout-topbar">
+		<h:outputLabel id="logoPart1" value="deriv"
+			style="color: #000000;padding: 0px !important;font-size: 32px;font-weight: bold;"></h:outputLabel>
+		<h:outputLabel id="logoPart2" value="IT"
+			style="color: #8b0000;padding: 0px !important;font-size: 32px;font-weight: bold;"></h:outputLabel>
+		<h:outputText value="Entitlement Provider"
+			style="color: #FFFFFF;font-family: Palatino !important;font-size: 32px;font-weight: bold;margin: 0 auto !important;padding-bottom: 0;text-align: center !important;margin: 0 32% !important;"></h:outputText>
+	</div>
+
+	<div id="wrapper">
+		<div id="wrapperIndent">
+			<div id="layout-portlets-cover">
+				<div id="Container96 Fnone MarAuto">
+					<div class="Container100 UserLinks">
+						<div class="ContainerIndent TexAlRight">
+							<ui:insert name="header">
+								<ui:include src="/pages/common/header.xhtml"></ui:include>
+							</ui:insert>
+							<!-- <span
+								class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+									value="#{session.lastAccessedTime}">
+									<f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+								</h:outputText></span> <i class="icon-account_circle Fright Fs30"></i> <span
+								class="DispInlBlock Fright BoldGray MarRight10 HoverEffect Fs22 FontRobotoLight"><h:outputText
+									value="#{loginMB.username}"></h:outputText></span> <i
+								class="icon-account_circle Fright Fs30"></i> -->
+						</div>
+						<div class="EmptyBox10"></div>
+						<div class="Container100 Responsive100">
+							<ui:insert name="body">
+								<p:messages id="messages" showDetail="true" autoUpdate="true"
+									severity="info, warn" closable="true">
+									<p:effect type="blind" event="load" delay="10000">
+										<f:param name="mode" value="'hide'" />
+									</p:effect>
+								</p:messages>
+								<p:messages id="erromessagesId" showDetail="true"
+									autoUpdate="true" closable="true" severity="error">
+								</p:messages>
+								<p:panel id="id_bodyContentPL"
+									style="border: none !important; padding:0px !important; width: 98%; margin : 0 auto !important;">
+									<ui:insert name="workingpanel"></ui:insert>
+								</p:panel>
+							</ui:insert>
+							<ui:insert name="footer">
+								<ui:include src="/pages/common/footer.xhtml"></ui:include>
+							</ui:insert>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

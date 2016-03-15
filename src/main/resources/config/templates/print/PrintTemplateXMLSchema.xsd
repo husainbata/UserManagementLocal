@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://printtemplate.print.module.core.creation.uid.nbad.derivit.com"
+	xmlns:tns="http://printtemplate.print.module.core.creation.uid.nbad.derivit.com"
+	elementFormDefault="qualified">
+	<xs:element name="DITUIDPrintTemplate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" />
+				<xs:element ref="tns:DITUIDPrintTemplateSections"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateSections">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:DITUIDPrintTemplateSection"
+					maxOccurs="unbounded" minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateSection">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" />
+				<xs:element ref="tns:DITUIDPrintTemplateFields"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateFields">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:DITUIDPrintTemplateField" maxOccurs="unbounded"
+					minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDPrintTemplateField">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" />
+				<xs:element type="xs:string" name="Id" />
+				<xs:element type="xs:string" name="Value" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

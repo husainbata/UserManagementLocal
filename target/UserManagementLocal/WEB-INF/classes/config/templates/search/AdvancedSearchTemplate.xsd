@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://searchtemplate.search.module.core.creation.uid.nbad.derivit.com"
+	xmlns:tns="http://searchtemplate.search.module.core.creation.uid.nbad.derivit.com"
+	elementFormDefault="qualified">
+	<xs:element name="DITUIDSearchTemplate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="Name" default="SEARCH_TEMPLATE" />
+				<xs:element ref="tns:DITUIDSearchTemplateFields"
+					maxOccurs="1" minOccurs="1"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DITUIDSearchTemplateFields">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:DITUIDSearchTemplateField"
+					maxOccurs="unbounded" minOccurs="1"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DITUIDSearchTemplateField">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="DisplayName" />
+				<xs:element type="xs:string" name="DataType" />
+				<xs:element type="xs:string" name="Mandatory" />
+				<xs:element type="xs:string" name="FieldId" />
+				<xs:element type="xs:string" name="SelectedOperator" />
+				<xs:element type="xs:string" name="Operators" />
+				<xs:element type="xs:string" name="SelectedJoinCondition"></xs:element>
+				<xs:element type="xs:string" name="JoinCondition" />
+				<xs:element type="xs:string" name="Searchable" />
+				<xs:element type="xs:string" name="ColumnName" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

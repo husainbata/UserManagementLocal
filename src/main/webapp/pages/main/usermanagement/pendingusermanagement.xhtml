@@ -1,0 +1,99 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<p:dataTable var="pendinguserView"
+		value="#{usermanagementMB.pendingUserList}"
+		id="pendinguserviewdatatableid" frozenColumns="1"
+		rowIndexVar="indexVar" scrollWidth="90%" editMode="cell"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="10,20,30" paginatorPosition="bottom"
+		emptyMessage="No User detail found, please click on Add to add new user" rows="10"
+		rowStyleClass="row-style-class" paginator="true" editable="true">
+		
+		<p:column sortBy="userName" filterBy="userName"
+			filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="User Name" />
+			</f:facet>
+			<h:outputText value="#{uid.userName}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="firstName" filterBy="firstName"
+			filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="First Name" />
+			</f:facet>
+			<h:outputText value="#{uid.firstName}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="lastName" filterBy="lastName"
+			filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="Last Name" />
+			</f:facet>
+			<h:outputText value="#{uid.lastName}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="emailId" filterBy="emailId" filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="Email Id" />
+			</f:facet>
+			<h:outputText value="#{uid.emailId}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="businessUnit" filterBy="businessUnit"
+			filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="Business Unit" />
+			</f:facet>
+			<h:outputText value="#{uid.businessUnit}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="status" filterBy="status" filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="Status" />
+			</f:facet>
+			<h:outputText value="#{uid.status}" style="text-align:center;" />
+		</p:column>
+
+		<p:column sortBy="groupName" filterBy="groupName"
+			filterMatchMode="exact">
+			<f:facet name="header">
+				<h:outputText value="Group" />
+			</f:facet>
+			<h:outputText value="#{uid.groupName}" style="text-align:center;" />
+		</p:column>
+
+		<p:column styleClass="align-center">
+			<f:facet name="header">
+				<h:outputText value="Action" />
+			</f:facet>
+			<p:commandButton id="editiconidUser" icon="editIcon" title="Edit"
+				rendered="false"
+				actionListener="#{dituidadminusermanagementmb.editPendingUser(uid)}"
+				oncomplete="PF('addUserDialog').show();" update=":addUserDialogId"
+				style="background: none !important; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0) !important; border: none !important; height: 20px !important; width:20px !important;box-shadow: none !important;"></p:commandButton>
+			<p:commandButton id="viewiconidUser" icon="dashboardViewIcon"
+				title="View" update=":addUserDialogId"
+				oncomplete="PF('addUserDialog').show();"
+				actionListener="#{dituidadminusermanagementmb.viewPendingUser(uid)}"
+				style="background: none !important; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0) !important; border: none !important; height: 20px !important; width:20px !important;box-shadow: none !important;"></p:commandButton>
+			<p:column
+				rendered="#{securityContext.grantedAuthority.approvedUsers or logInBean.userDO.department eq 'ADMIN'}">
+				<p:commandButton id="approveiconidUser" icon="approveIcon"
+					rendered="#{uid.modifiedBy != dituidadminusermanagementmb.userDO.userName}"
+					title="Approve" oncomplete="PF('approveUserDialogWV').show();"
+					actionListener="#{dituidadminusermanagementmb.approveUser(uid)}"
+					style="background: none !important; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0) !important; border: none !important; height: 20px !important; width:20px !important;box-shadow: none !important;"></p:commandButton>
+			</p:column>
+			<p:commandButton id="rejecticonidUser" icon="rejectIcon"
+				rendered="#{uid.modifiedBy != dituidadminusermanagementmb.userDO.userName}"
+				title="Reject" oncomplete="PF('rejectUserDialogWV').show();"
+				actionListener="#{dituidadminusermanagementmb.rejectUser(uid)}"
+				style="background: none !important; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0) !important; border: none !important; height: 20px !important; width:20px !important;box-shadow: none !important;"></p:commandButton>
+
+		</p:column>
+	</p:dataTable>
+</ui:fragment>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://mlccounterparty.couterparty.module.core.creation.uid.nbad.derivit.com"
+	xmlns:tns="http://mlccounterparty.couterparty.module.core.creation.uid.nbad.derivit.com"
+	elementFormDefault="qualified">
+  <xs:element name="mlc_counterparties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="tns:counterparty"/>
+        <xs:element minOccurs="0" ref="tns:reconciliation_data"/>
+      </xs:sequence>
+      <xs:attribute name="date_format" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="ddmmyyyy"/>
+            <xs:enumeration value="ddmmyy"/>
+            <xs:enumeration value="mmddyyyy"/>
+            <xs:enumeration value="mmddyy"/>
+            <xs:enumeration value="yyyymmdd"/>
+            <xs:enumeration value="ddmmmyyyy"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="vectorial_separators" default="##"/>
+      <xs:attribute name="number_format" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="counterparty">
+    <xs:complexType>
+      <xs:attribute name="Key" use="required"/>
+      <xs:attribute name="Name" use="required"/>
+      <xs:attribute name="Parent"/>
+      <xs:attribute name="Type" use="required"/>
+      <xs:attribute name="Customer" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="EXIMBILLS_Alias" use="required"/>
+      <xs:attribute name="Activity_Code" use="required"/>
+      <xs:attribute name="mxAgreementCSA" use="required"/>
+      <xs:attribute name="Fitch_Rating_Date" use="required"/>
+      <xs:attribute name="MaxTenor" use="required"/>
+      <xs:attribute name="PSE_Type" use="required"/>
+      <xs:attribute name="New_Document_Type" use="required"/>
+      <xs:attribute name="Management_Entity" use="required"/>
+      <xs:attribute name="Short_Name" use="required"/>
+      <xs:attribute name="Issuer_Internal_Rating_Date" use="required"/>
+      <xs:attribute name="Issuer_Internal_Rating" use="required"/>
+      <xs:attribute name="MIDAS_Alias" use="required"/>
+      <xs:attribute name="New_Document_Management_Entity" use="required"/>
+      <xs:attribute name="mxAgreementEntity" use="required"/>
+      <xs:attribute name="Ownership_Stake_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="RA5_Alias" use="required"/>
+      <xs:attribute name="UID" use="required"/>
+      <xs:attribute name="Swift_Code" use="required"/>
+      <xs:attribute name="Additional_Relationship_Managers" use="required"/>
+      <xs:attribute name="Group_RM_ID" use="required"/>
+      <xs:attribute name="MX_Business_Activities" use="required"/>
+      <xs:attribute name="SandP_Rating_Date" use="required"/>
+      <xs:attribute name="Hidden_Facility" use="required"/>
+      <xs:attribute name="Percentage_Shareholding" use="required"/>
+      <xs:attribute name="Passport_Number" use="required"/>
+      <xs:attribute name="Issuer_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="LoanIQ_Alias" use="required"/>
+      <xs:attribute name="Sector" use="required"/>
+      <xs:attribute name="Internal_Rating_Date" use="required"/>
+      <xs:attribute name="Activity" use="required"/>
+      <xs:attribute name="IMAL_Alias" use="required"/>
+      <xs:attribute name="UID_Originating_Branch" use="required"/>
+      <xs:attribute name="Counterparty_Type" use="required"/>
+      <xs:attribute name="Hidden_DCF" use="required"/>
+      <xs:attribute name="Sanction_ID" use="required"/>
+      <xs:attribute name="Internal_Branch" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="NBAD_Director" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Contact_Person" use="required"/>
+      <xs:attribute name="PO_Box" use="required"/>
+      <xs:attribute name="AgreementISDA" use="required"/>
+      <xs:attribute name="Intellect_Alias" use="required"/>
+      <xs:attribute name="Moodys_Rating" use="required"/>
+      <xs:attribute name="Legal_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Fitch_Rating" use="required"/>
+      <xs:attribute name="Status" use="required"/>
+      <xs:attribute name="Trade_License_Number" use="required"/>
+      <xs:attribute name="Mobile_Number" use="required"/>
+      <xs:attribute name="Zip_Code" use="required"/>
+      <xs:attribute name="Reuters_Alias" use="required"/>
+      <xs:attribute name="Issuer_Fitch_Rating" use="required"/>
+      <xs:attribute name="Fax" use="required"/>
+      <xs:attribute name="Issuer_SandP_Rating" use="required"/>
+      <xs:attribute name="Documents" use="required"/>
+      <xs:attribute name="Document_Completion_Flag" use="required"/>
+      <xs:attribute name="Country_Of_Domicile_Code" use="required"/>
+      <xs:attribute name="Appropriateness_Rating" use="required"/>
+      <xs:attribute name="SandP_Rating" use="required"/>
+      <xs:attribute name="Country_Of_Incorporation" use="required"/>
+      <xs:attribute name="IsBankingCounterparty" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="ProductAllowed" use="required"/>
+      <xs:attribute name="Asset_Class" use="required"/>
+      <xs:attribute name="Personnel_Guarantee_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Telephone_Number" use="required"/>
+      <xs:attribute name="Parent_Short_Name" use="required"/>
+      <xs:attribute name="PRIME_Alias" use="required"/>
+      <xs:attribute name="Sanction_Expiry_Date" use="required"/>
+      <xs:attribute name="Issuer_Moodys_Rating_Date" use="required"/>
+      <xs:attribute name="CityDealer_Alias" use="required"/>
+      <xs:attribute name="PAY_NET" use="required"/>
+      <xs:attribute name="Counterparty_UID" use="required"/>
+      <xs:attribute name="Sanction_Status" use="required"/>
+      <xs:attribute name="Issuer_Fitch_Rating_Date" use="required"/>
+      <xs:attribute name="Trade_License_Expiry_Date" use="required"/>
+      <xs:attribute name="Country_Of_Incorporation_Code" use="required"/>
+      <xs:attribute name="Document_Description" use="required"/>
+      <xs:attribute name="Relationship_Manager" use="required"/>
+      <xs:attribute name="CDS_FTD_Alias" use="required"/>
+      <xs:attribute name="CptyTrading_Hedging" use="required"/>
+      <xs:attribute name="Sanction_Issue_Date" use="required"/>
+      <xs:attribute name="Date_Of_Incorporation" use="required"/>
+      <xs:attribute name="Workflow_Trigger" use="required"/>
+      <xs:attribute name="mxAgreementGMRA" use="required"/>
+      <xs:attribute name="Hierarchy_Level" use="required"/>
+      <xs:attribute name="Exposure_Exists" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Counterparty_Email" use="required"/>
+      <xs:attribute name="Primary_Industry_Of_Operation" use="required"/>
+      <xs:attribute name="Additional_RM_ID" use="required"/>
+      <xs:attribute name="Extended_Sanction_Date" use="required"/>
+      <xs:attribute name="Collaterals" use="required"/>
+      <xs:attribute name="Address3" use="required"/>
+      <xs:attribute name="Address2" use="required"/>
+      <xs:attribute name="Issuer_SandP_Rating_Date" use="required"/>
+      <xs:attribute name="Address1" use="required"/>
+      <xs:attribute name="Facilities" use="required"/>
+      <xs:attribute name="Reason_for_Status_Change" use="required"/>
+      <xs:attribute name="IsTradingCounterparty" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Business_Line" use="required"/>
+      <xs:attribute name="BrokerVision_Alias" use="required"/>
+      <xs:attribute name="Bloomberg_TOMS_Alias" use="required"/>
+      <xs:attribute name="Investment_Portfolio_Alias" use="required"/>
+      <xs:attribute name="mxAgreementISDA" use="required"/>
+      <xs:attribute name="Website_Address" use="required"/>
+      <xs:attribute name="Sanction_Type" use="required"/>
+      <xs:attribute name="Moodys_Rating_Date" use="required"/>
+      <xs:attribute name="Management_Control_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Legal_Type" use="required"/>
+      <xs:attribute name="Parent_UID" use="required"/>
+      <xs:attribute name="FX_Margin_Alias" use="required"/>
+      <xs:attribute name="Appropriateness_Rating_Date" use="required"/>
+      <xs:attribute name="Internal_Rating" use="required"/>
+      <xs:attribute name="CptyLiqHorizonDay" use="required"/>
+      <xs:attribute name="DCF_Management_Entity" use="required"/>
+      <xs:attribute name="Issuer_Moodys_Rating" use="required"/>
+      <xs:attribute name="Date_Of_Birth" use="required"/>
+      <xs:attribute name="Country_Of_Domicile" use="required"/>
+      <xs:attribute name="Trading_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Workspace_Flag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="City" use="required"/>
+      <xs:attribute name="ExternalID" default="-1"/>
+      <xs:attribute name="Removable" default="TRUE">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="TRUE"/>
+            <xs:enumeration value="FALSE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reconciliation_data">
+    <xs:complexType>
+      <xs:attribute name="nb_inputs" use="required"/>
+      <xs:attribute name="nb_deletions" default="0"/>
+      <xs:attribute name="nb_insertions"/>
+      <xs:attribute name="nb_identicals"/>
+      <xs:attribute name="nb_updates"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

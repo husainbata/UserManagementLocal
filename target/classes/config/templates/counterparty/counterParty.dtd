@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT mlc_counterparties (counterparty*,reconciliation_data?)>
+<!ATTLIST mlc_counterparties date_format (ddmmyyyy|ddmmyy|mmddyyyy|mmddyy|yyyymmdd|ddmmmyyyy) #REQUIRED
+                vectorial_separators CDATA "##"
+                number_format CDATA #REQUIRED>
+<!ELEMENT counterparty EMPTY>
+<!ATTLIST counterparty
+                Key CDATA #REQUIRED
+                Name CDATA #REQUIRED
+                Parent CDATA #IMPLIED
+                Type CDATA #REQUIRED
+                Customer (TRUE|FALSE) #REQUIRED
+                EXIMBILLS_Alias CDATA #REQUIRED
+                Activity_Code CDATA #REQUIRED
+                mxAgreementCSA CDATA #REQUIRED
+                Fitch_Rating_Date CDATA #REQUIRED
+                MaxTenor CDATA #REQUIRED
+                PSE_Type CDATA #REQUIRED
+                New_Document_Type CDATA #REQUIRED
+                Management_Entity CDATA #REQUIRED
+                Short_Name CDATA #REQUIRED
+                Issuer_Internal_Rating_Date CDATA #REQUIRED
+                Issuer_Internal_Rating CDATA #REQUIRED
+                MIDAS_Alias CDATA #REQUIRED
+                New_Document_Management_Entity CDATA #REQUIRED
+                mxAgreementEntity CDATA #REQUIRED
+                Ownership_Stake_Flag (TRUE|FALSE) #REQUIRED
+                RA5_Alias CDATA #REQUIRED
+                UID CDATA #REQUIRED
+                Swift_Code CDATA #REQUIRED
+                Additional_Relationship_Managers CDATA #REQUIRED
+                Group_RM_ID CDATA #REQUIRED
+                MX_Business_Activities CDATA #REQUIRED
+                SandP_Rating_Date CDATA #REQUIRED
+                Hidden_Facility CDATA #REQUIRED
+                Percentage_Shareholding CDATA #REQUIRED
+                Passport_Number CDATA #REQUIRED
+                Issuer_Flag (TRUE|FALSE) #REQUIRED
+                LoanIQ_Alias CDATA #REQUIRED
+                Sector CDATA #REQUIRED
+                Internal_Rating_Date CDATA #REQUIRED
+                Activity CDATA #REQUIRED
+                IMAL_Alias CDATA #REQUIRED
+                UID_Originating_Branch CDATA #REQUIRED
+                Counterparty_Type CDATA #REQUIRED
+                Hidden_DCF CDATA #REQUIRED
+                Sanction_ID CDATA #REQUIRED
+                Internal_Branch (TRUE|FALSE) #REQUIRED
+                NBAD_Director (TRUE|FALSE) #REQUIRED
+                Contact_Person CDATA #REQUIRED
+                PO_Box CDATA #REQUIRED
+                AgreementISDA CDATA #REQUIRED
+                Intellect_Alias CDATA #REQUIRED
+                Moodys_Rating CDATA #REQUIRED
+                Legal_Flag (TRUE|FALSE) #REQUIRED
+                Fitch_Rating CDATA #REQUIRED
+                Status CDATA #REQUIRED
+                Trade_License_Number CDATA #REQUIRED
+                Mobile_Number CDATA #REQUIRED
+                Zip_Code CDATA #REQUIRED
+                Reuters_Alias CDATA #REQUIRED
+                Issuer_Fitch_Rating CDATA #REQUIRED
+                Fax CDATA #REQUIRED
+                Issuer_SandP_Rating CDATA #REQUIRED
+                Documents CDATA #REQUIRED
+                Document_Completion_Flag CDATA #REQUIRED
+                Country_Of_Domicile_Code CDATA #REQUIRED
+                Appropriateness_Rating CDATA #REQUIRED
+                SandP_Rating CDATA #REQUIRED
+                Country_Of_Incorporation CDATA #REQUIRED
+                IsBankingCounterparty (TRUE|FALSE) #REQUIRED
+                ProductAllowed CDATA #REQUIRED
+                Asset_Class CDATA #REQUIRED
+                Personnel_Guarantee_Flag (TRUE|FALSE) #REQUIRED
+                Telephone_Number CDATA #REQUIRED
+                Parent_Short_Name CDATA #REQUIRED
+                PRIME_Alias CDATA #REQUIRED
+                Sanction_Expiry_Date CDATA #REQUIRED
+                Issuer_Moodys_Rating_Date CDATA #REQUIRED
+                CityDealer_Alias CDATA #REQUIRED
+                PAY_NET CDATA #REQUIRED
+                Counterparty_UID CDATA #REQUIRED
+                Sanction_Status CDATA #REQUIRED
+                Issuer_Fitch_Rating_Date CDATA #REQUIRED
+                Trade_License_Expiry_Date CDATA #REQUIRED
+                Country_Of_Incorporation_Code CDATA #REQUIRED
+                Document_Description CDATA #REQUIRED
+                Relationship_Manager CDATA #REQUIRED
+                CDS_FTD_Alias CDATA #REQUIRED
+                CptyTrading_Hedging CDATA #REQUIRED
+                Sanction_Issue_Date CDATA #REQUIRED
+                Date_Of_Incorporation CDATA #REQUIRED
+                Workflow_Trigger CDATA #REQUIRED
+                mxAgreementGMRA CDATA #REQUIRED
+                Hierarchy_Level CDATA #REQUIRED
+                Exposure_Exists (TRUE|FALSE) #REQUIRED
+                Counterparty_Email CDATA #REQUIRED
+                Primary_Industry_Of_Operation CDATA #REQUIRED
+                Additional_RM_ID CDATA #REQUIRED
+                Extended_Sanction_Date CDATA #REQUIRED
+                Collaterals CDATA #REQUIRED
+                Address3 CDATA #REQUIRED
+                Address2 CDATA #REQUIRED
+                Issuer_SandP_Rating_Date CDATA #REQUIRED
+                Address1 CDATA #REQUIRED
+                Facilities CDATA #REQUIRED
+                Reason_for_Status_Change CDATA #REQUIRED
+                IsTradingCounterparty (TRUE|FALSE) #REQUIRED
+                Business_Line CDATA #REQUIRED
+                BrokerVision_Alias CDATA #REQUIRED
+                Bloomberg_TOMS_Alias CDATA #REQUIRED
+                Investment_Portfolio_Alias CDATA #REQUIRED
+                mxAgreementISDA CDATA #REQUIRED
+                Website_Address CDATA #REQUIRED
+                Sanction_Type CDATA #REQUIRED
+                Moodys_Rating_Date CDATA #REQUIRED
+                Management_Control_Flag (TRUE|FALSE) #REQUIRED
+                Legal_Type CDATA #REQUIRED
+                Parent_UID CDATA #REQUIRED
+                FX_Margin_Alias CDATA #REQUIRED
+                Appropriateness_Rating_Date CDATA #REQUIRED
+                Internal_Rating CDATA #REQUIRED
+                CptyLiqHorizonDay CDATA #REQUIRED
+                DCF_Management_Entity CDATA #REQUIRED
+                Issuer_Moodys_Rating CDATA #REQUIRED
+                Date_Of_Birth CDATA #REQUIRED
+                Country_Of_Domicile CDATA #REQUIRED
+                Trading_Flag (TRUE|FALSE) #REQUIRED
+                Workspace_Flag (TRUE|FALSE) #REQUIRED
+                City CDATA #REQUIRED
+                ExternalID CDATA "-1"
+                Removable (TRUE|FALSE) "TRUE"
+>
+<!ELEMENT reconciliation_data EMPTY>
+<!ATTLIST reconciliation_data
+nb_inputs CDATA #REQUIRED
+nb_deletions  CDATA "0"
+nb_insertions CDATA #IMPLIED
+nb_identicals CDATA #IMPLIED
+nb_updates CDATA  #IMPLIED
+>

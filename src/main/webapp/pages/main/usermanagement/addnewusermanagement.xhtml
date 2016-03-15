@@ -1,0 +1,103 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<style type="text/css">
+.addUserIcon {
+	background: url("#{resource['images/addNewUser.png']}") !important;
+}
+</style>
+
+	<p:commandButton value="Add User"
+		styleClass="Fs18 White RaisedButton FloatNoneOnMobile"
+		icon="addUserIcon" oncomplete="PF('addUserDialog').show();" />
+
+	<p:dialog id="addUserDialogId" header="User Details" resizable="false"
+		appendTo="@(body)" widgetVar="addUserDialog" modal="true"
+		dynamic="true" height="auto" width="auto">
+		<h:form id="addUserDialogform" prependId="false">
+
+			<h:panelGrid columns="2" cellspacing="5">
+				<p:outputLabel value="User Name: *" for="userId1"></p:outputLabel>
+				<p:inputText id="userId1" disabled="true"
+					value="#{dituidadminusermanagementmb.pendingUserDO.userName}"></p:inputText>
+
+				<p:outputLabel value="First Name: *" for="fnameId"></p:outputLabel>
+				<p:inputText id="fnameId" disabled="true"
+					value="#{dituidadminusermanagementmb.pendingUserDO.firstName}"></p:inputText>
+
+				<p:outputLabel value="Last Name: *" for="lnameId"></p:outputLabel>
+				<p:inputText id="lnameId" disabled="true"
+					value="#{dituidadminusermanagementmb.pendingUserDO.lastName}"></p:inputText>
+
+				<p:outputLabel value="Email ID: *" for="emailId"></p:outputLabel>
+				<p:inputText id="emailId" onblur="return validateUserEmail();"
+					value="#{dituidadminusermanagementmb.pendingUserDO.emailId}"></p:inputText>
+				<p:column></p:column>
+				<p:column>
+					<span id="validateusremailId" style="color: #FF0000;" />
+				</p:column>
+
+				<p:outputLabel value="Business Unit: *" for="businessId"></p:outputLabel>
+				<p:inputText id="businessId"
+					value="#{dituidadminusermanagementmb.pendingUserDO.businessUnit}"></p:inputText>
+				<p:column></p:column>
+				<p:column>
+					<span id="validateusrbusinessUnitId" style="color: #FF0000;" />
+				</p:column>
+
+				<p:outputLabel value="Location: *" for="locationId"></p:outputLabel>
+				<p:selectOneMenu
+					value="#{dituidadminusermanagementmb.pendingUserDO.location}"
+					filter="true" filterMatchMode="startsWith" effect="fade"
+					id="locationId" style="width: 220px !important;">
+					<f:selectItems value="#{dituidadminusermanagementmb.countries}" />
+				</p:selectOneMenu>
+
+				<h:outputText value="Application:" />
+				<p:selectCheckboxMenu
+					value="#{dituidadminusermanagementmb.pendingUserDO.groupNames}"
+					showCheckbox="true" label="Select a Value" filter="true"
+					filterText="Filter" filterMatchMode="startsWith"
+					style="width: 135px !important;background-color: #FFFFFF;margin-top: 8px !important;"
+					styleClass="counterparties-class">
+					<f:selectItems value="#{dituidadminusermanagementmb.groupNames}" />
+				</p:selectCheckboxMenu>
+
+				<h:outputText value="Group:" />
+				<p:selectCheckboxMenu
+					value="#{dituidadminusermanagementmb.pendingUserDO.groupNames}"
+					showCheckbox="true" label="Select a Value" filter="true"
+					filterText="Filter" filterMatchMode="startsWith"
+					style="width: 135px !important;background-color: #FFFFFF;margin-top: 8px !important;"
+					styleClass="counterparties-class">
+					<f:selectItems value="#{dituidadminusermanagementmb.groupNames}" />
+				</p:selectCheckboxMenu>
+
+				<!-- <p:outputLabel value="Status" for="statusId1"></p:outputLabel>
+				<p:selectOneMenu
+					value="#{dituidadminusermanagementmb.userDO.status}" filter="true"
+					filterMatchMode="startsWith" e*ffect="fade" id="statusId1"
+					style="width: 220px !important;">
+					<f:selectItems value="#{dituidadminusermanagementmb.userStatus}" />
+				</p:selectOneMenu> -->
+
+			</h:panelGrid>
+
+			<p:outputPanel>
+				<p:commandButton value="Save" icon="saveIcon"
+					disabled="#{dituidadminusermanagementmb.userbtn}"
+					onclick="if(validateUserDetailsSave()){PF('saveUserConfirmDailog').show();}"></p:commandButton>
+				<p:commandButton value="Reset" icon="resetIcon"
+					disabled="#{dituidadminusermanagementmb.userbtn}"
+					onclick="PF('resertUserConfirmDailog').show();"></p:commandButton>
+				<p:commandButton value="Cancel" icon="cancelIcon" type="reset"
+					onclick="PF('cancelUserConfirmDailog').show();"></p:commandButton>
+			</p:outputPanel>
+
+		</h:form>
+	</p:dialog>
+
+
+</ui:fragment>

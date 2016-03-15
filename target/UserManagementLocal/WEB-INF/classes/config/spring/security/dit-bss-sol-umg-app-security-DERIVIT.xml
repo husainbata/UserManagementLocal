@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:intercept-url pattern="/pages/**" access="permitAll" />
+		<sec:intercept-url pattern="/**" access="permitAll" />
+		<sec:intercept-url pattern="/javax.faces.resource/**"
+			access="permitAll" />
+		<sec:form-login login-page="/index.xhtml" />
+		<sec:logout invalidate-session="true"
+			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
+			logout-success-url="/index.xhtml"></sec:logout>
+	</sec:http>
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="ldapAuthProvider"></sec:authentication-provider>
+	</sec:authentication-manager>
+
+	<bean id="ldapUserSearch"
+		class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
+		<constructor-arg value="" />
+		<constructor-arg value="(sAMAccountName={0})" />
+		<constructor-arg ref="ldapContextSource" />
+		<property name="searchSubtree" value="true"></property>
+	</bean>
+
+	<bean id="ldapContextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+		<property name="url"
+			value="ldap://192.168.100.21:389/DC=DERIVIT,DC=LOCAL" />
+		<property name="userDn" value="bharathkumar@DERIVIT.LOCAL" />
+		<property name="password" value="kumar123bharath" />
+	</bean>
+
+	<bean id="ldapAuthProvider"
+		class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+		<constructor-arg>
+			<bean
+				class="org.springframework.security.ldap.authentication.BindAuthenticator">
+				<constructor-arg ref="ldapContextSource" />
+				<property name="userSearch" ref="ldapUserSearch" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="userDetailsContextMapper"
+		class="com.derivit.nbad.uid.creation.security.DITUIDUserAttributesMapper"></bean>
+	<sec:global-method-security
+		pre-post-annotations="enabled" />
+
+</beans>
